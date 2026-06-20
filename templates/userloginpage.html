@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body{
+            background: linear-gradient(45deg, #ff6b6b, #ffcc33);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        .content {
+            width: 1000px;
+        }
+        .alert {
+            display: none;
+        }
+
+        .message-item {
+            color: red;
+            border: 2px solid red;
+            border-radius: 2px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content"><br><br>
+        <h2 class="text-center">User Login</h2>
+        <div id="message-container">
+            {% for m in messages %}
+                <h5 style="color: red;">{{ m.message }}</h5>
+            {% endfor %}
+        </div>
+        <br><br>
+        <div class="card shadow">
+            <div class="card-body">
+                <form id="loginForm" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
+                        <div class="invalid-feedback">
+                            Please enter your username.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                        <div class="invalid-feedback">
+                            Please enter your password.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+            </div>
+            <div>
+               
+            </div>
+        </div>
+    </div>
+    
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+
+<script>
+        function removeMessages() {
+            const messageContainer = document.getElementById('message-container');
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 4000);
+        }
+
+        // Run the removeMessages function after the DOM content is loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+            removeMessages();
+        });
+</script>
+
+</body>
+</html>
+
+
+{% endblock %}

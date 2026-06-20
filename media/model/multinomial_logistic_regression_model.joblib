@@ -1,0 +1,17 @@
+/* Styling for the Navigation Menu */
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    color: #45505b;
+    padding: 10px 18px;
+    background: #f2f3f5;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+/* Hover effect for interactive buttons */
+.nav-menu a:hover, .nav-menu li:hover > a {
+    color: #fff;
+    background: #0563bb; /* Distinctive blue theme */
+    width: 100%;
+}
